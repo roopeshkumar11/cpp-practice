@@ -1,0 +1,1 @@
+*p2=*p2+1;  // change before and after 
