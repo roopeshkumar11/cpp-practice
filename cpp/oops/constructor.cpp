@@ -5,6 +5,9 @@ class Car{
   public:
     int price;
     string color;
+    static int time;  //stattic user data value access without make object
+    static int speed;
+
 
 
 // default
@@ -35,14 +38,21 @@ class Car{
     cout<<"copy price  "<<price<<endl;
 
     };
-
+ 
+  static int random(){
+     return Car::speed;  //static function can access only static member 
+  }
 
     ~Car(){                      // destruction memory de-alloaction
    cout<<"destructor"<<endl;
     }
 
+
+
 };
-int main(){
+  int   Car::time=10;  //initialize 
+  int Car::speed=90;
+int main(){  
     
     Car c(10);   //destructor call automatically for satic loaction but destructor call manually for dynamic allocation
     Car C(20);
@@ -55,6 +65,10 @@ int main(){
 
     C=c;  // aasigmnet operator for copy
      cout<<"price ---- copy "<<C.price<<endl;
+
+     cout<<"static memmber "<<Car::time<<endl;    
+
+    cout<<"static function " <<Car::speed<<endl; // static function  
 
 
 
