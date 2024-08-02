@@ -8,7 +8,7 @@ public:
 
     Node(int data) {
         this->data = data;
-        this->next = nullptr; // Initialize next to nullptr
+        this->next = NULL; // Initialize next to nullptr
     }
 
     //destructor
@@ -73,7 +73,7 @@ void insertatmiddle(Node* &tail,Node* &head, int position ,int d){
 
 void print(Node* head) {
     Node* temp = head;
-    while (temp != nullptr) {
+    while (temp != NULL) {
         cout << temp->data << " ";
         temp = temp->next;
     }
