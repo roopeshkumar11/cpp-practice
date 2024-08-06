@@ -1,2 +1,1 @@
- // Node*m=kreverse(head,2);
-    // cout<<m;
+head->next=new Node(8);

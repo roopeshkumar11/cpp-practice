@@ -101,6 +101,7 @@ void deletenode(Node* tail,int value){
 
 
 }
+
 int main(){
     Node* tail=NULL;
     insertAtHead(tail,4,3);
