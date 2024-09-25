@@ -18,5 +18,9 @@ int main(){
   cout<<"after value of i "<<i<<endl;
     cout<<"after value of p "<<p<<endl;
     cout<<"after value of p2 "<<p2<<endl;
+    cout<<"after value of p2 3333"<<endl;
+    cout<<"hello"<<endl;
+    cout<<"endl"<<endl;
+
 
 }

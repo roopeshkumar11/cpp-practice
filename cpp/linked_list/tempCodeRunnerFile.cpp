@@ -1,1 +1,1 @@
-head->next=new Node(8);
+ revrese_left_right(head,9,6);

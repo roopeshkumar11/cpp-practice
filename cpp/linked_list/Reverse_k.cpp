@@ -57,7 +57,7 @@ void print(Node* head) {
 int main(){
 
     Node*head=new Node(8);
-    head->next=new Node(8);
+    head->next=new Node(1);
     head->next->next=new Node(6);
      head->next->next->next=new Node(8);
     head->next->next->next->next=new Node(6);
