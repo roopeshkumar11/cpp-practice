@@ -1,1 +1,1 @@
- revrese_left_right(head,9,6);
+print(head);
