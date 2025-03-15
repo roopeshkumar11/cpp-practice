@@ -1,13 +1,14 @@
-// set i bit in give number 
-
-
 #include<iostream>
 using namespace std;
+
+
 int main(){
     int i=2;
+    int nums=13;
 
-    int nums=9;
 
-    int ans=nums | (1<<i);
+    int ans= nums & ~(1<<i);
+
     cout<<ans;
+
 }
