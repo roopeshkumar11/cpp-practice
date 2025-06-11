@@ -2,8 +2,6 @@
 #include<queue>
 using namespace std;
 
-
-
 void smallestkelement(int arr[],int k,int size){
 
     priority_queue<int>heap;
@@ -23,8 +21,14 @@ cout<<" k smallest element : "<<heap.top();
     
 }
 int main(){
-    int arr[6]={7,10,4,3,20,15};
-    int n=5;
+//     int arr[6]={7,10,4,3,20,15};
+//     int n=5;
+// int k=3;
+// smallestkelement(arr,k,n);
+
+int arr[7]={5,6,1,7,9,0};
+
+int n=7;
 int k=3;
 smallestkelement(arr,k,n);
 
