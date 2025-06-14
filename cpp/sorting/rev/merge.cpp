@@ -1,11 +1,11 @@
 #include<iostream>
 using namespace std;
 
-void merge(int *arr,int s,int mid,int e){
+void merge(int arr[],int s,int mid,int e){
    
 
     int n1=mid-s+1;
-    int n2=e-mid+1;
+    int n2=e-mid;
 
     int arr1[n1];
     int arr2[n2];
@@ -45,7 +45,7 @@ void merge(int *arr,int s,int mid,int e){
     }
 }
 
-void Mergeshort(int *arr,int s,int e){
+void Mergeshort(int arr[],int s,int e){
    
 
   
@@ -53,7 +53,7 @@ void Mergeshort(int *arr,int s,int e){
     {
         return;
     }
-    int mid=s+(s+e)/2;
+    int mid=s+(e-s)/2;
     Mergeshort(arr,s,mid);
     Mergeshort(arr,mid+1,e);
     merge(arr, s, mid, e);
