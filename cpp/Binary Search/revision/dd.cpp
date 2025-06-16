@@ -66,8 +66,19 @@ void preorder(Node*root){
     if(root==NULL){
         return;
     }
+    cout<<root->data<<" ";
     preorder(root->left);
     preorder(root->right);
+    
+}
+
+
+void postorder(Node*root){
+    if(root==NULL){
+        return;
+    }
+    postorder(root->left);
+    postorder(root->right);
     cout<<root->data<<" ";
 }
 int main(){
@@ -76,8 +87,14 @@ int main(){
     inputBST(root);
     cout<<" inordere"<<endl;
     inordere(root);
+    cout<<endl;
 
     cout<<"preordere"<<endl;
     preorder(root);
+     cout<<endl;
+
+
+     cout<<"postordere"<<endl;
+     postorder(root);
 
 }
