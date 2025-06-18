@@ -24,11 +24,15 @@ class Tries{
     public:
 
     TriesNode*root;
+    Tries(){
+        root=new TriesNode('\0');
+    }
 
     void insertutil(TriesNode*root,string word){
 
         if(word.length()==0){
             root->istreminal=true;
+            return;
         }
 
         int index=word[0]-'A';
@@ -51,4 +55,6 @@ class Tries{
 };
 int main(){
 
+    Tries*t=new Tries();
+    t->insert("abcgdd");
 }
