@@ -38,7 +38,7 @@ class Tries{
         int index=word[0]-'A';
         TriesNode*child;
 
-        if(root->children!=NULL){
+        if(root->children[index]!=NULL){
             child=root->children[index];
         }
 
@@ -46,15 +46,46 @@ class Tries{
             child=new TriesNode(word[0]);
             root->children[index]=child;
         }
-        insertutil(root,word.substr(1));
+        insertutil(child,word.substr(1));
     }
 
     void insert(string word){
         insertutil(root,word);
     }
+
+    bool serachuntil(TriesNode* root,string word){
+        if(word.length()==0){
+            return root->istreminal;
+        }
+
+        int index=word[0]-'A';
+        TriesNode* child;
+
+
+        if(root->children[index]!=NULL){
+            child=root->children[index];
+        }
+
+        else{
+            return false;
+        }
+
+        return serachuntil(child,word.substr(1));
+
+
+        
+
+    }
+
+    bool search(string word){
+        return serachuntil(root,word);
+    }
 };
 int main(){
 
     Tries*t=new Tries();
-    t->insert("abcgdd");
+    t->insert("ABCDE");
+
+    cout<<"Serach "<<t->search("ABC")<<" ";
+    cout<<"Serach "<<t->search("ABCDE")<<" ";
 }
