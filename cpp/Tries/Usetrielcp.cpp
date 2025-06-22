@@ -1,109 +1,94 @@
 #include<iostream>
+#include<vector>
+#include<string>
 using namespace std;
-class Treinode{
 
-    public:
+class Treinode {
+public:
     char data;
-    Treinode*children[26];
+    Treinode* children[26];
     int countnode;
     bool Terminal;
 
-
-   Treinode(char chh){
-   data=chh;
-   for(int i=0;i<26;i++){
-    children[i]=NULL;
-   }
-   countnode=0;
-
-   Terminal=false;}
+    Treinode(char chh) {
+        data = chh;
+        for(int i = 0; i < 26; i++) {
+            children[i] = NULL;
+        }
+        countnode = 0;
+        Terminal = false;
+    }
 };
 
+class Trei {
+public:
+    Treinode* root;
 
-class Trei{
-    public:
-    Treinode*root;
-
-    Trei(){
-        root=new Treinode('\0');
+    Trei() {
+        root = new Treinode('\0');
     }
 
-
-    void insertutill(Treinode*root,string word){
-        if(word.length()==0){
-         root->Terminal=true;
-         return;
+    void insertutill(Treinode* root, string word) {
+        if(word.length() == 0) {
+            root->Terminal = true;
+            return;
         }
 
-  int idx=word[0]-'a';
+        int idx = word[0] - 'a';
+        Treinode* child;
 
-  Treinode*child;
+        if(root->children[idx] != NULL) {
+            child = root->children[idx];
+        }
+        else {
+            child = new Treinode(word[0]);
+            root->countnode++; // increase count when new child is created
+            root->children[idx] = child;
+        }
 
-  if(root->children[idx]!=NULL){
-      child=root->children[idx];
-  }
-
-  else{
-        child=new Treinode(word[0]);
-        root->countnode++;
-        root->children[idx]=child;
-  }
-
-    insertutill(child,word.substr(1));
-    }
-     void insertword(string word){
-        insertutill(root,word);
+        insertutill(child, word.substr(1));
     }
 
+    void insertword(string word) {
+        insertutill(root, word);
+    }
 
+    void lcp(string wrd, string &ans) {
+        Treinode* node = root; // Start from root
+        for(int i = 0; i < wrd.length(); i++) {
+            char ch = wrd[i];
+            int idx = ch - 'a';
 
-void lcp(string wrd,string &ans){
-        for(int i=0;i<wrd.length();i++){
-
-             char ch=wrd[i];
-            if(root->countnode==1){
-                ans+=ch;
-
-                int idx=ch-'a';
-                root=root->children[idx];
+            // if current node has only one child and is not terminal, keep going
+            if(node->countnode == 1 && node->Terminal == false) {
+                ans += ch;
+                node = node->children[idx]; // move to child
             }
-
-            else{
-                break;
-            }
-
-            if(root->Terminal){
+            else {
                 break;
             }
         }
     }
-
 };
 
+string longestCommonPrefix(vector<string> &arr, int n) {
+    Trei* t = new Trei();
 
-
-string longestCommonPrefix(vector<string> &arr, int n)
-{
-    Trei*t=new Trei();
-    
-    for(int i=0;i<n;i++){
+    for(int i = 0; i < n; i++) {
         t->insertword(arr[i]);
     }
 
+    string first = arr[0];
+    string ans = "";
 
-string first=arr[0];
-
-
-    string ans="";
-
-   t->lcp(first,ans);
+    t->lcp(first, ans);
     return ans;
 }
 
-int main(){
-     vector<string> str = {"abcdes", "abchil", "abopo"};
+int main() {
+    vector<string> str = {"abcdes", "abchil", "abopo"};
     int n = str.size();
 
     string result = longestCommonPrefix(str, n);
-    cout << "Longest Common Prefix " << result << endl;
+    cout << "Longest Common Prefix: " << result << endl;
 }
