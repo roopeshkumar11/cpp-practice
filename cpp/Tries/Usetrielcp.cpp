@@ -1,3 +1,5 @@
+#include<iostream>
+using namespace std;
 class Treinode{
 
     public:
@@ -96,4 +98,12 @@ string first=arr[0];
 
    t->lcp(first,ans);
     return ans;
+}
+
+int main(){
+     vector<string> str = {"abcdes", "abchil", "abopo"};
+    int n = str.size();
+
+    string result = longestCommonPrefix(str, n);
+    cout << "Longest Common Prefix " << result << endl;
 }
