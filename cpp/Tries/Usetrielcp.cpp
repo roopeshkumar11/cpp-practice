@@ -42,7 +42,7 @@ public:
         }
         else {
             child = new Treinode(word[0]);
-            root->countnode++; // increase count when new child is created
+            root->countnode++; 
             root->children[idx] = child;
         }
 
@@ -54,15 +54,15 @@ public:
     }
 
     void lcp(string wrd, string &ans) {
-        Treinode* node = root; // Start from root
+        Treinode* node = root; 
         for(int i = 0; i < wrd.length(); i++) {
             char ch = wrd[i];
             int idx = ch - 'a';
 
-            // if current node has only one child and is not terminal, keep going
+      
             if(node->countnode == 1 && node->Terminal == false) {
                 ans += ch;
-                node = node->children[idx]; // move to child
+                node = node->children[idx];
             }
             else {
                 break;
