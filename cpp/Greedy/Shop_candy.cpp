@@ -4,20 +4,46 @@
 using namespace std;
 
 
-void shopcandy(vector<int>&candy,int k,int n,int &minprice ,int &maxprice){
 
-    sort(candy.begin(),candy.end());
+int minimumCost(vector<int> &cost, int n, int k)
+{
+  int free=n-1;
 
-    minprice=candy[0];
+  int buy=0;
+sort(cost.begin(),cost.end());
+  int minivalue=0;
 
-    for(int i=1;i<candy.size()-k;i++){
-        minprice+=candy[i];
-    }
+  while(buy<=free){
 
-     maxprice=candy[n-1];
-    for(int i=k;i<candy.size()-1;i++){
-        maxprice+=candy[i];
-    }
+      minivalue+=cost[buy];
+      buy++;
+
+      free=free-k;
+
+  }
+  return minivalue;
+
+}
+
+
+int maximumCost(vector<int> &cost, int n, int k)
+{
+    int free=0;
+
+  int buy=n-1;
+  sort(cost.begin(),cost.end());
+
+  int maxivalue=0;
+
+  while(free<=buy){
+
+      maxivalue+=cost[buy];
+      buy--;
+
+      free=free+k;
+
+  }
+  return maxivalue;
 }
 
 
@@ -30,8 +56,8 @@ int main(){
     int maxprice=0;
     int minprice=0;
 
-shopcandy(candy,k,n,minprice,maxprice);
 
-    cout<<"minprice: "<<minprice<<" :: "<<"maxiprice: "<<maxprice;
+
+    cout<<"minprice: "<<minimumCost(candy,n,k)<<" :: "<<"maxiprice: "<<maximumCost(candy,n,k);
 
 }
