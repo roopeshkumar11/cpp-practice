@@ -12,7 +12,7 @@ string longestprefix(vector<string>& arr, int n) {
         bool match = true;
 
         for(int j = 1; j < n; j++) {
-            // Fixed this condition:
+         
             if(arr[j].size() <= i || ch != arr[j][i]) {
                 match = false;
                 break;
